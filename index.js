@@ -75,14 +75,39 @@ const SearchPage = () => (
         <button id="search-text-btn" className="btn btn-default">
             Or tap here to type
         </button>
-
     </div>
 )
 const LoadingPage = () => (<div>LOADING</div>)
 const ResultsPage = () => (<div>RESULTS</div>)
 const DetailsPage = () => (<div>DETAILS</div>)
-const MapPage = () => (<div>MAP</div>)
-const HelpPage = () => (<div>HELP</div>)
+const MapPage = () => (
+    <div id="help-page">
+        <div className="help-text">
+            Map accurate as of 10/18/2016.<br />
+            The blue dot indicates your current location.
+        </div>
+        <img src="map.jpg" id="map-img" />
+    </div>
+)
+const HelpPage = () => (
+    <div id="help-page">
+        <div className="help-text">
+            Hello! I can help you quickly inquire about how your production lines are doing.
+            Just speak or type your query and I will fetch that data.
+        </div>
+        <div className="help-text">
+            Try "How's line 3?" to retrieve data for line 3.
+            Check out the "Map" tab if you are not sure which line is which.
+        </div>
+        <div className="help-text">
+            Once you have entered a query, the response will only take a few seconds!
+        </div>
+        <div className="help-text">
+            If you recieve an error, you will be notified and able to try again.
+            If the errors persist, please call corporate support at ...
+        </div>
+    </div>
+)
 
 const mapTabToName = (name) => {
     switch(name){
