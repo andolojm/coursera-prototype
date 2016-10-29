@@ -64,7 +64,7 @@ const drillMetric = (metric) => ({
 // Initial app state
 const initState = {
     'tab': TAB_SEARCH,
-    'page': PAGE_RESULTS,
+    'page': PAGE_SEARCH,
     'isRec': false,
     'isText': false,
     'metric': METRIC_DOWNTIME,
