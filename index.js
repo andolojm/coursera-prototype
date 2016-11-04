@@ -129,7 +129,7 @@ const TabNav = ({onSearchClick, onMapClick, onHelpClick, active}) => (
         </div>
         <div id="help" className="tabnav-item" className={"tabnav-item" + (active == TAB_HELP ? ' active' : '')}
                 onClick={() => onHelpClick()}>
-            <span className="glyphicon glyphicon-list-alt tabnav-item-glyph" aria-hidden="true"></span>
+            <span className="glyphicon glyphicon-question-sign tabnav-item-glyph" aria-hidden="true"></span>
             <div className="tabnav-item-text">Help</div>
         </div>
     </div>
@@ -157,7 +157,7 @@ const SearchPageComponent = ({onRecClick, onRecEnd, onTextClick, onTextEnd, isRe
             Hello! I can help you quickly inquire about how your production lines are doing.
             Just speak or type your query and I will fetch that data.
         </div>
-        <div id="search-speak" onClick={() => (isRec ? onRecEnd : onRecClick)()}>
+        <div id="search-speak" className={(isRec ? 'search-speak-active' : 'search-speak-inactive')} onClick={() => (isRec ? onRecEnd : onRecClick)()}>
             <span id="search-speak-icon" className="glyphicon glyphicon-phone-alt"></span>
             <div>{isRec ? 'Tap here to stop' : 'Tap here to speak'}</div>
         </div>
@@ -181,7 +181,7 @@ const LoadingPageComponent = ({cancelSearch}) => (
             <span className="glyphicon glyphicon-repeat loading"></span>
         </div>
         <div id="cancel">
-            <button id="cancel-search-btn" className="btn btn-default" onClick={() => cancelSearch()}>
+            <button id="cancel-search-btn" className="btn btn-danger" onClick={() => cancelSearch()}>
                 Cancel Search
             </button>
         </div>
@@ -216,21 +216,21 @@ const ResultsPageContent = ({cancelSearch, drillDowntime, drillEfficiency, drill
             <table>
                 <tr><th className="metric-header" colSpan="2">Last 24 Hours</th></tr>
                 <tr onClick={() => drillDowntime()}>
-                    <td className="metric-title">Downtime</td>
+                    <td className="metric-title"><button className="btn btn-default">Downtime</button></td>
                     <td className="metric-number">4%</td>
                 </tr>
                 <tr onClick={() => drillEfficiency()}>
-                    <td className="metric-title">Efficiency</td>
+                    <td className="metric-title"><button className="btn btn-default">Efficiency</button></td>
                     <td className="metric-number">91%</td>
                 </tr>
                 <tr onClick={() => drillYield()}>
-                    <td className="metric-title">Hourly Yield</td>
+                    <td className="metric-title"><button className="btn btn-default">Hourly Yield</button></td>
                     <td className="metric-number">960 Units</td>
                 </tr>
             </table>
         </div>
         <div id="cancel">
-            <button id="cancel-search-btn" className="btn btn-default" onClick={() => cancelSearch()}>
+            <button id="cancel-search-btn" className="btn btn-danger" onClick={() => cancelSearch()}>
                 Make a new search
             </button>
         </div>
@@ -255,7 +255,7 @@ const DetailsPageContent = ({metric, cancelSearch, backToLoading}) => (
         <img src="graph.png" id="graph-img" />
         <div id="cancel">
             <button id="cancel-search-btn" className="btn btn-default" onClick={() => backToLoading()}>
-                Return
+                Return to current search
             </button>
         </div>
         <div id="cancel">
@@ -271,7 +271,7 @@ const detailsStateToProps = (state, props) => ({
 })
 const detailsDispatchToProps = (dispatch, props) => ({
     cancelSearch: () => dispatch(cancelSearch()),
-    backToLoading: () => dispatch(switchPage(PAGE_LOADING)),
+    backToLoading: () => dispatch(switchPage(PAGE_RESULTS)),
 })
 
 const DetailsPage = ReactRedux.connect(detailsStateToProps, detailsDispatchToProps)(DetailsPageContent)
