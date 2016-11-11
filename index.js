@@ -153,9 +153,11 @@ const searchDispatchToProps = (dispatch, props) => {
 
 const SearchPageComponent = ({onRecClick, onRecEnd, onTextClick, onTextEnd, isRec, isText}) => (
     <div id="search-page">
-        <div id="search-text">
+        <div className="help-text">
             Hello! I can help you quickly inquire about how your production lines are doing.
-            Just speak or type your query and I will fetch that data.
+        </div>
+        <div className="help-text">
+            Just ask about how your production line is doing over talk or text, and I will retrieve that info.
         </div>
         <div id="search-speak" className={(isRec ? 'search-speak-active' : 'search-speak-inactive')} onClick={() => (isRec ? onRecEnd : onRecClick)()}>
             <span id="search-speak-icon" className="glyphicon glyphicon-phone-alt"></span>
@@ -164,7 +166,7 @@ const SearchPageComponent = ({onRecClick, onRecEnd, onTextClick, onTextEnd, isRe
         <div id="search-textbox-container" className={isText ? 'active' : 'hidden'}>
             <input type="text" className="form-control"  id="search-textbox" />
         </div>
-        <button id="search-text-btn" className="btn btn-default" onClick={() => (isText ? onTextEnd : onTextClick)()}>
+        <button id="search-text-btn" className="btn btn-custom" onClick={() => (isText ? onTextEnd : onTextClick)()}>
             {isText ? 'Search' : 'Or tap here to type'}
         </button>
     </div>
@@ -181,7 +183,7 @@ const LoadingPageComponent = ({cancelSearch}) => (
             <span className="glyphicon glyphicon-repeat loading"></span>
         </div>
         <div id="cancel">
-            <button id="cancel-search-btn" className="btn btn-danger" onClick={() => cancelSearch()}>
+            <button id="cancel-search-btn" className="btn btn-warning" onClick={() => cancelSearch()}>
                 Cancel Search
             </button>
         </div>
@@ -216,21 +218,21 @@ const ResultsPageContent = ({cancelSearch, drillDowntime, drillEfficiency, drill
             <table>
                 <tr><th className="metric-header" colSpan="2">Last 24 Hours</th></tr>
                 <tr onClick={() => drillDowntime()}>
-                    <td className="metric-title"><button className="btn btn-default">Downtime</button></td>
+                    <td className="metric-title"><button className="btn btn-custom">Downtime</button></td>
                     <td className="metric-number">4%</td>
                 </tr>
                 <tr onClick={() => drillEfficiency()}>
-                    <td className="metric-title"><button className="btn btn-default">Efficiency</button></td>
+                    <td className="metric-title"><button className="btn btn-custom">Efficiency</button></td>
                     <td className="metric-number">91%</td>
                 </tr>
                 <tr onClick={() => drillYield()}>
-                    <td className="metric-title"><button className="btn btn-default">Hourly Yield</button></td>
+                    <td className="metric-title"><button className="btn btn-custom">Hourly Yield</button></td>
                     <td className="metric-number">960 Units</td>
                 </tr>
             </table>
         </div>
         <div id="cancel">
-            <button id="cancel-search-btn" className="btn btn-danger" onClick={() => cancelSearch()}>
+            <button id="cancel-search-btn" className="btn btn-warning" onClick={() => cancelSearch()}>
                 Make a new search
             </button>
         </div>
@@ -254,12 +256,12 @@ const DetailsPageContent = ({metric, cancelSearch, backToLoading}) => (
         </div>
         <img src="graph.png" id="graph-img" />
         <div id="cancel">
-            <button id="cancel-search-btn" className="btn btn-default" onClick={() => backToLoading()}>
+            <button id="cancel-search-btn" className="btn btn-custom" onClick={() => backToLoading()}>
                 Return to current search
             </button>
         </div>
         <div id="cancel">
-            <button id="cancel-search-btn" className="btn btn-default" onClick={() => cancelSearch()}>
+            <button id="cancel-search-btn" className="btn btn-warning" onClick={() => cancelSearch()}>
                 Make a new search
             </button>
         </div>
@@ -354,7 +356,9 @@ const Page = ({ tab, page, tabName,
 
     return (
         <div>
-            {activePage}
+            <div id="page-container">
+                {activePage}
+            </div>
             <TabNav onSearchClick={onSearchClick}
                     onMapClick={onMapClick}
                     onHelpClick={onHelpClick}
