@@ -4,7 +4,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { METRIC_DOWNTIME, METRIC_EFFICIENCY, METRIC_YIELD, drillMetric, cancelSearch } from '../actions';
+import { METRIC_DOWNTIME, METRIC_EFFICIENCY, METRIC_YIELD,
+      drillMetric, cancelSearch } from '../actions';
 
 
 const resultsStateToProps = () => ({});
@@ -20,22 +21,42 @@ const ResultsPage = ({ onCancelSearch, onDrillDowntime, onDrillEfficiency, onDri
     <div className="help-text">
         Here is the data for line 3.
     </div>
-    <img src="graph.png" id="graph-img" alt="Graph of productivity over time (Current: 68%)" />
+    <img
+      src="assets/graph.png"
+      id="graph-img"
+      alt="Graph of productivity over time (Current: 68%)"
+    />
     <div className="help-text">
       <table>
-        <tr><th className="metric-header" colSpan="2">Last 24 Hours</th></tr>
-        <tr onClick={() => onDrillDowntime()}>
-          <td className="metric-title"><button className="btn btn-custom">Downtime</button></td>
-          <td className="metric-number">4%</td>
-        </tr>
-        <tr onClick={() => onDrillEfficiency()}>
-          <td className="metric-title"><button className="btn btn-custom">Efficiency</button></td>
-          <td className="metric-number">91%</td>
-        </tr>
-        <tr onClick={() => onDrillYield()}>
-          <td className="metric-title"><button className="btn btn-custom">Hourly Yield</button></td>
-          <td className="metric-number">960 Units</td>
-        </tr>
+        <thead>
+          <tr><th className="metric-header" colSpan="2">Last 24 Hours</th></tr>
+        </thead>
+        <tbody>
+          <tr onClick={() => onDrillDowntime()}>
+            <td className="metric-title">
+              <button className="btn btn-custom">Downtime</button>
+            </td>
+            <td className="metric-number">
+              4%
+            </td>
+          </tr>
+          <tr onClick={() => onDrillEfficiency()}>
+            <td className="metric-title">
+              <button className="btn btn-custom">Efficiency</button>
+            </td>
+            <td className="metric-number">
+              91%
+            </td>
+          </tr>
+          <tr onClick={() => onDrillYield()}>
+            <td className="metric-title">
+              <button className="btn btn-custom">Hourly Yield</button>
+            </td>
+            <td className="metric-number">
+              960 Units
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
     <div id="cancel">

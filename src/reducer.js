@@ -1,5 +1,5 @@
-import Redux, { createStore } from 'redux';
-import ReduxThunk from 'redux-thunk';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 import InitState from './state';
 import { SWITCH_PAGE, SWITCH_TAB, START_RECORD, STOP_RECORD,
@@ -49,4 +49,4 @@ const mainReducer = (state = InitState, action) => {
 };
 
 // Create a store from the (single) reducer and apply Thunk
-export default createStore(mainReducer, Redux.applyMiddleware(ReduxThunk.default));
+export default createStore(mainReducer, applyMiddleware(thunk));

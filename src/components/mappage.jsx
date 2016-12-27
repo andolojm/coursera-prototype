@@ -6,6 +6,6 @@ export default () => (
       Map accurate as of 10/18/2016.<br />
       The blue dot indicates your current location.
     </div>
-    <img src="map.png" id="map-img" alt="Plant map. You're currently near line 7." />
+    <img src="assets/map.png" id="map-img" alt="Plant map. You're currently near line 7." />
   </div>
 );

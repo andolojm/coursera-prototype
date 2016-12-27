@@ -17,7 +17,7 @@ const DetailsPage = ({ metric, onCancelSearch, backToLoading }) => (
     <div className="help-text">
       {metric} Details
     </div>
-    <img src="graph.png" id="graph-img" alt="Graph of selected metric. (Current: 68%)" />
+    <img src="assets/graph.png" id="graph-img" alt="Graph of selected metric. (Current: 68%)" />
     <div id="cancel">
       <button id="cancel-search-btn" className="btn btn-custom" onClick={() => backToLoading()}>
         Return to current search
